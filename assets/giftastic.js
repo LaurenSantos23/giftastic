@@ -21,9 +21,14 @@ $(".gif").on("click", function() {
   }
 });
 
+//var animals = $.get("http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=3zKbbHWlo7BZnA3InQdAQewinucfrcB3&limit=10");
+//  animals.done(function(data) { console.log("success got data", data); });
+
+
 
 function displayDemGifs() {
 
+  
 var animals  = $(this).attr("animal-gifs");
 var queryURL= "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=3zKbbHWlo7BZnA3InQdAQewinucfrcB3&limit=10";
 
