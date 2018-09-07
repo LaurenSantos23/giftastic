@@ -6,22 +6,33 @@ $(document).ready(function() {
                     "aye-aye","tufted deer","dumbo octopus","naked mole rat","gobi jerboa"]
 
 //make the gifs start animation with a click, and stop animation with a click (on click events)
+$(".gif").on("click", function() {
+  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+  var state = $(this).attr("data-state");
+  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+  // Then, set the image's data-state to animate
+  // Else set src to the data-still value
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+});
 
 
-//format the search bar to populate a new set of 10 gifs based on the user's search term
-
-//javascript, jQuery
 function displayDemGifs() {
 
 var animals  = $(this).attr("animal-gifs");
 var queryURL= "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=3zKbbHWlo7BZnA3InQdAQewinucfrcB3&limit=10";
 
-        // Creating an AJAX call for the specific movie button being clicked
+        // Creating an AJAX call for the specific animal button being clicked
         $.ajax({
             url: queryURL,
             method: "GET"
           }).then(function(response) {
-  
+             console.log(response);
             // Creating a div to hold the gif
             var gifDiv = $("<div class='gif'>");
   
@@ -79,7 +90,10 @@ var queryURL= "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=3zK
       });
 
       // Adding a click event listener to all elements with a class of "animal-btn"
-      $(document).on("click", ".animal-btn", displayDemGifs);
+     // $(document).on("click", ".animal-btn", displayDemGifs);
+     $(document.body).on("click", ".animal-btn", function() {
+
+    })
 
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
