@@ -2,8 +2,8 @@ $(document).ready(function() {
 
 //create array of animals, each animal in the array will have a button.  When clicked, the button becomes 10 gifs per animal
 
-    var animals = ["rabbit", "star nosed mole","wombat", "blob fish", "pink fairy armadillo",
-                    "aye-aye","tufted deer","dumbo octopus","naked mole rat","gobi jerboa"]
+    var animals = ["rabbit", "star nosed mole","wombat", "tarsier", "blob fish", "pink fairy armadillo",
+                    "aye-aye","tufted deer","dumbo octopus","naked mole rat","gobi jerboa", "axolotl", "desert rain frog"]
 
 function displayDemGifs() {
 
