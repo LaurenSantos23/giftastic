@@ -5,36 +5,46 @@ $(document).ready(function() {
     var animals = ["rabbit", "star nosed mole","wombat", "tarsier", "blob fish", "pink fairy armadillo",
                     "aye-aye","tufted deer","dumbo octopus","naked mole rat","gobi jerboa", "axolotl", "desert rain frog"]
 
-function displayDemGifs() {
 
-  
-var animals  = $(this).attr("animal-gifs");
-var queryURL= "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=3zKbbHWlo7BZnA3InQdAQewinucfrcB3&limit=10";
 
+$("#buttons-view").on('click', ".animal-btn", function() {
+$("#animal-gifs").empty()
+  var buttonValue = $(this).attr("data-name")
+ // var animals  = $(this).attr("animal-gifs");
+  var queryURL= "http://api.giphy.com/v1/gifs/search?q=" + buttonValue + "&api_key=3zKbbHWlo7BZnA3InQdAQewinucfrcB3&limit=10";
+  console.log(queryURL)
         // Creating an AJAX call for the specific animal button being clicked
         $.ajax({
             url: queryURL,
             method: "GET"
           }).then(function(response) {
              console.log(response);
+             for(var i=0; i< response.data.length; i++){
+
+             
             // Creating a div to hold the gif
             var gifDiv = $("<div class='gif'>");
   
-  
             // Retrieving the URL for the gif
-            var imgURL = response.Gif;
+            var imgURL = response.data[i].images.fixed_height_still.url;
   
             // Creating an element to hold the gif
-            var image = $("<img>").attr("src", imgURL);
-  
+            var image = $("<img>")
+            image.attr("src", imgURL);
+            image.attr("data-still", imgURL)
+            image.attr("data-animate",response.data[i].images.fixed_height.url)
+            image.attr("data-state",imgURL)
+            image.addClass("gif")
+
             // Appending the image
             gifDiv.append(image);
   
             // Putting the gifs above the previous gifs
             $("#animal-gifs").prepend(gifDiv);
+          }
           });
   
-        }
+}) 
 
         // Function for displaying movie data
       function renderButtons() {
@@ -82,7 +92,7 @@ var queryURL= "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=3zK
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
       //make the gifs start animation with a click, and stop animation with a click (on click events)
-      $(".gif").on("click", function() {
+      $("#animal-gifs").on('click', ".gif", function() {  
         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
         var state = $(this).attr("data-state");
         // If the clicked image's state is still, update its src attribute to what its data-animate value is.
