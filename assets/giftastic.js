@@ -3,7 +3,7 @@ $(document).ready(function() {
 //create array of animals, each animal in the array will have a button.  When clicked, the button becomes 10 gifs per animal
 
     var animals = ["rabbit", "koala","wombat", "tarsier", "platypus", "salamander",
-                    "duck","tufted deer","dumbo octopus","red panda","gobi jerboa", "axolotl", "desert rain frog"]
+                    "duck","puffin","dumbo octopus","red panda","gobi jerboa", "axolotl", "desert rain frog"]
 
 
 
@@ -22,7 +22,16 @@ $("#animal-gifs").empty()
              console.log(response);
              for(var i=0; i< response.data.length; i++){
 
-             
+           /* // create a div to store rating for gifs
+            var ratingDiv = $("<div class='rating'>");     
+            // var to store rating data
+            var rating = response.Rated;  
+            // creating an element to have rating displayed
+            var ratingDisplay = $("<p>").text("Rating:" + rating);
+
+            ratingDiv.append(ratingDisplay);
+            console.log(rating); */
+          
             // Creating a div to hold the gif
             var gifDiv = $("<div class='gif'>");
   
