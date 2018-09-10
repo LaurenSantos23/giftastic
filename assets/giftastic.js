@@ -76,7 +76,7 @@ $("#animal-gifs").empty()
         event.preventDefault();
         // This line grabs the input from the textbox
         var animal = $("#animal-input").val().trim();
-
+        console.log("#animal-input")
         // Adding what user types from the textbox to our array
         animals.push(animal);
 
