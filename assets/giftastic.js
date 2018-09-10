@@ -80,7 +80,7 @@ $("#animal-gifs").empty()
         // Adding what user types from the textbox to our array
         animals.push(animal);
 
-        // Calling renderButtons which handles the processing of our movie array
+        // Calling renderButtons which handles the processing of our animal array
         renderButtons();
       });
 
