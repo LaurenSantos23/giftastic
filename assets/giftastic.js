@@ -7,9 +7,10 @@ $(document).ready(function() {
 
 
 
-$("#buttons-view").on('click', ".animal-btn", function() {
+$("#buttons-view").on('click', ".animal-btn", "#animal-input", function() {
 $("#animal-gifs").empty()
   var buttonValue = $(this).attr("data-name")
+
  // var animals  = $(this).attr("animal-gifs");
   var queryURL= "http://api.giphy.com/v1/gifs/search?q=" + buttonValue + "&api_key=3zKbbHWlo7BZnA3InQdAQewinucfrcB3&limit=10";
   console.log(queryURL)
@@ -49,11 +50,11 @@ $("#animal-gifs").empty()
         // Function for displaying movie data
       function renderButtons() {
 
-        // Deleting the movies prior to adding new movies
+        // Deleting the gifs prior to adding new gifs
         // (this is necessary otherwise you will have repeat buttons)
         $("#buttons-view").empty();
 
-        // Looping through the array of movies
+        // Looping through the array of animals
         for (var i = 0; i < animals.length; i++) {
 
           // Then dynamicaly generating buttons for each animal in the array
@@ -85,7 +86,7 @@ $("#animal-gifs").empty()
 
       // Adding a click event listener to all elements with a class of "animal-btn"
      // $(document).on("click", ".animal-btn", displayDemGifs);
-     $(document.body).on("click", ".animal-btn", function() {
+     $(document.body).on("click", ".animal-btn", "#animal-input", function() {
 
     })
 
@@ -106,13 +107,5 @@ $("#animal-gifs").empty()
           $(this).attr("data-state", "still");
         }
       });
-
-     
-
-
-//var animals = $.get("http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=3zKbbHWlo7BZnA3InQdAQewinucfrcB3&limit=10");
-//  animals.done(function(data) { console.log("success got data", data); });
-
-
 
 })
