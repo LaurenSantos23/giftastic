@@ -28,7 +28,11 @@ $("#animal-gifs").empty()
   
             // Retrieving the URL for the gif
             var imgURL = response.data[i].images.fixed_height_still.url;
-  
+
+            // Creates an element to have the rating displayed
+            var rating = results[i].rating;
+            var p = $("<h2>").text("Rating: " + rating)
+
             // Creating an element to hold the gif
             var image = $("<img>")
             image.attr("src", imgURL);
