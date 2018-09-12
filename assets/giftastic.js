@@ -28,14 +28,14 @@ $("#animal-gifs").empty()
             var rating = response.data[i].rating;  
             // creating an element to have rating displayed
             var ratingDisplay = $("<p>").text("Rating:" + rating);
+            var gifDiv = $("<div class='gif'>");
 
             $(ratingDiv).append(ratingDisplay);
             $(gifDiv).append(ratingDiv)
             console.log(rating);
           
             // Creating a div to hold the gif
-            var gifDiv = $("<div class='gif'>");
-  
+            
             // Retrieving the URL for the gif
             var imgURL = response.data[i].images.fixed_height_still.url;
 
@@ -48,7 +48,7 @@ $("#animal-gifs").empty()
             image.addClass("gif")
 
             // Appending the image
-            gifDiv.append(image);
+            gifDiv.prepend(image);
   
             // Putting the gifs above the previous gifs
             $("#animal-gifs").prepend(gifDiv);
@@ -82,20 +82,20 @@ $("#animal-gifs").empty()
       }
 
       // This function handles events where a animal button is clicked
-      $("#add-buttons").on("click", function(event) {
+      $("#addNewGifs").on("click", function(event) {
         event.preventDefault();
         // This line grabs the input from the textbox
-        var animal = $(".addNewGifs").val().trim();
-        console.log(".addNewGifs")
+        var animal = $("#animal-input").val().trim();
+        console.log("#animal-input")
         // Adding what user types from the textbox to our array
-        animal.push(animals);
+        animals.push(animal)
 
         // Calling renderButtons which handles the processing of our animal array
         renderButtons();
       });
 
       // Adding a click event listener to all elements with a class of "animal-btn"
-     $(document.body).on("click", ".animal-btn", ".addNewGifs", function() {
+     $(document.body).on("click", ".animal-btn", "#animal-input", function() {
 
     })
 
