@@ -25,11 +25,12 @@ $("#animal-gifs").empty()
            // create a div to store rating for gifs
             var ratingDiv = $("<div class='rating'>");     
             // var to store rating data
-            var rating = response.Rated;  
+            var rating = response.data[i].rating;  
             // creating an element to have rating displayed
             var ratingDisplay = $("<p>").text("Rating:" + rating);
 
-            ratingDiv.append(ratingDisplay);
+            $(ratingDiv).append(ratingDisplay);
+            $(gifDiv).append(ratingDiv)
             console.log(rating);
           
             // Creating a div to hold the gif
