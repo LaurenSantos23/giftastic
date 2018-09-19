@@ -44,7 +44,7 @@ $("#animal-gifs").empty()
             image.attr("src", imgURL);
             image.attr("data-still", imgURL)
             image.attr("data-animate",response.data[i].images.fixed_height.url)
-            image.attr("data-state",imgURL)
+            image.attr("data-state","still")
             image.addClass("gif")
 
             // Appending the image
